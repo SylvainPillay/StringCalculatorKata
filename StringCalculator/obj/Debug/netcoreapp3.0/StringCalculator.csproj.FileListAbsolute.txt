@@ -1,0 +1,15 @@
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.deps.json
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.dll
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.pdb
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.csprojAssemblyReference.cache
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.AssemblyInfoInputs.cache
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.AssemblyInfo.cs
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.dll
+C:\Users\sylvain\Desktop\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.pdb
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.deps.json
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.dll
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\bin\Debug\netcoreapp3.0\StringCalculator.pdb
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.AssemblyInfoInputs.cache
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.AssemblyInfo.cs
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.dll
+C:\Users\sylvain\Desktop\StringCalcKata\StringCalculator\StringCalculator\obj\Debug\netcoreapp3.0\StringCalculator.pdb
