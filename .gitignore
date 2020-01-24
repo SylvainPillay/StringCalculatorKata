@@ -6,8 +6,8 @@
 x64/
 x86/
 bld/
-[Bb]in/
-[Oo]bj/
+[Bb]in/*
+[Oo]bj/*
 [Ll]og/
 /.vs/Kata/v16/.suo
 /.vs/ProjectSettings.json
