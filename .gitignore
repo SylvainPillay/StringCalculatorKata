@@ -6,3 +6,9 @@
 /.vs/StringCalculator/v16/Server/sqlite3/storage.ide
 /.vs/StringCalculator/v16/Server/sqlite3/storage.ide-shm
 /.vs/StringCalculator/v16/Server/sqlite3/storage.ide-wal
+/StringCalculator/obj/Debug/netcoreapp3.0/StringCalculator.csproj.FileListAbsolute.txt
+/TestStringCalculator/bin/Debug/netcoreapp3.0/TestStringCalculator.dll
+/TestStringCalculator/bin/Debug/netcoreapp3.0/TestStringCalculator.pdb
+/TestStringCalculator/obj/Debug/netcoreapp3.0/TestStringCalculator.csproj.FileListAbsolute.txt
+/TestStringCalculator/obj/Debug/netcoreapp3.0/TestStringCalculator.dll
+/TestStringCalculator/obj/Debug/netcoreapp3.0/TestStringCalculator.pdb

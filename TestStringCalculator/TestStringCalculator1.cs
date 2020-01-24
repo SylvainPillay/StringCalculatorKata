@@ -13,7 +13,7 @@ namespace TestStringCalculator
         private StringCalculator1 calc = new StringCalculator1();
 
         [TestMethod]
-        public void AAdd_PassedEmptyString_Returns0()
+        public void Add_PassedEmptyString_Returns0()
         {
             var input = "";
             var expectedResult = 0;
