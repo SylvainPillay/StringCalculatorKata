@@ -8,6 +8,7 @@ x86/
 bld/
 [Bb]in/*
 [Oo]bj/*
+.vs/*
 [Ll]og/
 /.vs/Kata/v16/.suo
 /.vs/ProjectSettings.json
