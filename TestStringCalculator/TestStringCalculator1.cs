@@ -1,9 +1,7 @@
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using StringCalculator;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using Assert = NUnit.Framework.Assert;
 
 namespace TestStringCalculator
 {
@@ -31,14 +29,14 @@ namespace TestStringCalculator
     // TODO please update these tests to use NUnit, MSTest is the pain
     // TODO given your new found knowledge try and improve the test names
     // TODO Tests should have //Arrange //Act //Assert comments
-    [TestClass]
+    [TestFixture]
     public class StringCalculator_UnitTest6 // TODO why does this class have the number 6 at the end
     {
         // TODO, tests should not share state. Doing so couples them and allows them to interact, which is bad.
         //        Please create an instance per test in their arrange sections using a factory function.
         private StringCalculator1 calc = new StringCalculator1();
 
-        [TestMethod]
+        [Test]
         public void Add_PassedEmptyString_Returns0()
         {
             var input = "";
@@ -48,7 +46,7 @@ namespace TestStringCalculator
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
+        [Test]
         public void Add_Passed1Number_Returns1()
         {
             var input = "1";
@@ -59,7 +57,7 @@ namespace TestStringCalculator
 
         // TODO triangulate, refer to TODO comment on class
         // TODO, this test doesn't have an assert
-        [TestMethod]
+        [Test]
         public void Add_PassedTwoNumber_Returns4()
         {
             var input = "2,2";
@@ -68,7 +66,7 @@ namespace TestStringCalculator
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
+        [Test]
         public void Add_PassedCustomDelimiter_Returns8()
         {
             var input = "//;\n2;2;2;2";
@@ -78,18 +76,16 @@ namespace TestStringCalculator
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [Test]
         public void Add_NegativesError()
         {
             var input = "//;\n2;2;2;-2";
-            var expectedResult = 6;
-            var result = calc.Add(input);
-            Assert.AreEqual(expectedResult, result);
+            var ex = Assert.Throws<Exception>(() => calc.Add(input));
+            Assert.That(ex.Message, Is.EqualTo("negatives not allowed -2"));
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
+        [Test]
         public void Add_PassedNumbersGreaterThan1000_Returns8()
         {
             var input = "//;\n2;2;2;2,1002";
@@ -99,7 +95,7 @@ namespace TestStringCalculator
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
+        [Test]
         public void Add_PassedMoreThanOneDelimiter_Returns6()
         {
             var input = "//[*][%]\n1*2%3";
@@ -109,7 +105,7 @@ namespace TestStringCalculator
         }
 
         // TODO triangulate, refer to TODO comment on class
-        [TestMethod]
+        [Test]
         public void Add_PassedDelimiterOfAnyLen_Returns6()
         {
             var input = "//[***]\n1***2***3";
