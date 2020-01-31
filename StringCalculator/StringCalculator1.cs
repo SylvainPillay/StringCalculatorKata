@@ -7,9 +7,12 @@ namespace StringCalculator
 {
    public class StringCalculator1
     {
+        // TODO the code for getting delimiters is spread out between this field, the Add method and the getDelimiterList
+        //       getting delimiters is definitely one responsibility.
         private List<string> defaultDelimList = new List<string> { ",", "\n" };
         public int Add(string args)
         {
+            // TODO I'm not convinced you need this line of code.
             if (string.IsNullOrEmpty(args)) return 0;
 
             if (args.StartsWith("//"))
@@ -21,6 +24,8 @@ namespace StringCalculator
             return getSumOfAllNumbers(args);
         }
 
+        // TODO this method is doing multiple things, it is parsing number, splitting numbers, filtering number and
+        //       doing a little co-ordination by calling the ValidateNegativeNumbers.
         private int getSumOfAllNumbers(string args)
         {
             var numberList = args.Split(defaultDelimList.ToArray(), StringSplitOptions.None)
