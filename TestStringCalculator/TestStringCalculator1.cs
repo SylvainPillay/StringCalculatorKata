@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata.Ecma335;
 using NUnit.Framework;
 using StringCalculator;
 using Assert = NUnit.Framework.Assert;
@@ -30,18 +31,24 @@ namespace TestStringCalculator
     // TODO given your new found knowledge try and improve the test names
     // TODO Tests should have //Arrange //Act //Assert comments
     [TestFixture]
-    public class StringCalculator_UnitTest6 // TODO why does this class have the number 6 at the end
+    public class TestStringCalculator1 // TODO why does this class have the number 6 at the end
     {
         // TODO, tests should not share state. Doing so couples them and allows them to interact, which is bad.
         //        Please create an instance per test in their arrange sections using a factory function.
-        private StringCalculator1 calc = new StringCalculator1();
+
+        public StringCalculator1 StringCalculatorSutBuilder()
+        {
+            var useCase = new  StringCalculator1();
+            return useCase;
+        }
 
         [Test]
         public void Add_PassedEmptyString_Returns0()
         {
             var input = "";
             var expectedResult = 0;
-            var result = calc.Add(input);
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -51,7 +58,8 @@ namespace TestStringCalculator
         {
             var input = "1";
             var expectedResult = 1;
-            var result = calc.Add(input);
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -62,7 +70,9 @@ namespace TestStringCalculator
         {
             var input = "2,2";
             var expectedResult = 4;
-            var result = calc.Add(input);
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
 
         // TODO triangulate, refer to TODO comment on class
@@ -71,7 +81,8 @@ namespace TestStringCalculator
         {
             var input = "//;\n2;2;2;2";
             var expectedResult = 8;
-            var result = calc.Add(input);
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -80,7 +91,8 @@ namespace TestStringCalculator
         public void Add_NegativesError()
         {
             var input = "//;\n2;2;2;-2";
-            var ex = Assert.Throws<Exception>(() => calc.Add(input));
+            var useCase = StringCalculatorSutBuilder();
+            var ex = Assert.Throws<Exception>(() => useCase.Add(input));
             Assert.That(ex.Message, Is.EqualTo("negatives not allowed -2"));
         }
 
@@ -89,8 +101,9 @@ namespace TestStringCalculator
         public void Add_PassedNumbersGreaterThan1000_Returns8()
         {
             var input = "//;\n2;2;2;2,1002";
-            var expectedResult = 8;
-            var result = calc.Add(input);
+            var expectedResult = 8; 
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -99,8 +112,9 @@ namespace TestStringCalculator
         public void Add_PassedMoreThanOneDelimiter_Returns6()
         {
             var input = "//[*][%]\n1*2%3";
-            var expectedResult = 6;
-            var result = calc.Add(input);
+            var expectedResult = 6; 
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -109,8 +123,9 @@ namespace TestStringCalculator
         public void Add_PassedDelimiterOfAnyLen_Returns6()
         {
             var input = "//[***]\n1***2***3";
-            var expectedResult = 6;
-            var result = calc.Add(input);
+            var expectedResult = 6; 
+            var useCase = StringCalculatorSutBuilder();
+            var result = useCase.Add(input);
             Assert.AreEqual(expectedResult, result);
         }
         //Thanks!!For Watching..
