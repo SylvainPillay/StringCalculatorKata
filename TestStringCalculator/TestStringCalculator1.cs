@@ -45,10 +45,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedEmptyString_Returns0()
         {
+            //Arrange
             var input = "";
             var expectedResult = 0;
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -56,10 +59,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_Passed1Number_Returns1()
         {
+            //Arrange
             var input = "1";
-            var expectedResult = 1;
+            var expectedResult = 1; 
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -68,10 +74,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedTwoNumber_Returns4()
         {
+            //Arrange
             var input = "2,2";
             var expectedResult = 4;
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
@@ -79,10 +88,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedCustomDelimiter_Returns8()
         {
+            //Arrange
             var input = "//;\n2;2;2;2";
             var expectedResult = 8;
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -90,8 +102,10 @@ namespace TestStringCalculator
         [Test]
         public void Add_NegativesError()
         {
+            //Arrange
             var input = "//;\n2;2;2;-2";
             var useCase = StringCalculatorSutBuilder();
+            //Act + Assert
             var ex = Assert.Throws<Exception>(() => useCase.Add(input));
             Assert.That(ex.Message, Is.EqualTo("negatives not allowed -2"));
         }
@@ -100,10 +114,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedNumbersGreaterThan1000_Returns8()
         {
+            //Arrange
             var input = "//;\n2;2;2;2,1002";
             var expectedResult = 8; 
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -111,10 +128,13 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedMoreThanOneDelimiter_Returns6()
         {
+            //Arrange
             var input = "//[*][%]\n1*2%3";
             var expectedResult = 6; 
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -122,14 +142,16 @@ namespace TestStringCalculator
         [Test]
         public void Add_PassedDelimiterOfAnyLen_Returns6()
         {
+            //Arrange
             var input = "//[***]\n1***2***3";
             var expectedResult = 6; 
             var useCase = StringCalculatorSutBuilder();
+            //Act
             var result = useCase.Add(input);
+            //Assert
             Assert.AreEqual(expectedResult, result);
         }
-        //Thanks!!For Watching..
 
-        // TODO missing test for multiple delimiters of different lengths
+        // TODO missing test for multiple delimiters of different lengths 
     }
 }
