@@ -22,3 +22,5 @@ bld/
 /TestStringCalculator/obj/Debug/netcoreapp3.0/TestStringCalculator.csproj.FileListAbsolute.txt
 /StringCalculator/obj/Debug/netcoreapp3.0/StringCalculator.csproj.FileListAbsolute.txt
 /TestStringCalculator/obj/Debug/netcoreapp3.0/TestStringCalculator.csproj.FileListAbsolute.txt
+/StringCalculator/obj/*
+/TestStringCalculator/obj/*
