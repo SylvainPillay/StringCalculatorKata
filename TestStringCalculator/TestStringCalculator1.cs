@@ -130,7 +130,7 @@ namespace TestStringCalculator
         [TestCase("//[*][%]\n1*2%3", 6)]
         [TestCase("//[a][z]\n98z213a8a32", 351)]
         [TestCase("//[*][%][@]\n1*2%3@8", 14)]
-        public void Add_GivenMoreThanOneCustomerDelimiter_ShouldSplitStringUsingAllDelimiters_AndSum(string input, int expectedResult)
+        public void Add_GivenMoreThanOneCustomDelimiter_ShouldSplitStringUsingAllDelimiters_AndSum(string input, int expectedResult)
         {
             //Arrange
 
