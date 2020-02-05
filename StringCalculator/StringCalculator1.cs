@@ -6,17 +6,15 @@ namespace StringCalculator
 {
    public class StringCalculator1
     {
-        // TODO the code for getting delimiters is spread out between this field, the Add method and the getDelimiterList
-        //       getting delimiters is definitely one responsibility. - done
         public int Add(string args)
         {
-
             var delimList = getDelimiterList(args);
-
+            // TODO please don't mutate a variable where there is no need to, it introduces complexity.
+            //       Rather create a new variable.
             args = GetStringToSplit(args);
 
             return getSumOfAllNumbers(args, delimList);
-        }
+        } // <--- TODO space blindness
         private List<string> getDelimiterList(string args)
         {
             var delimList = new List<string> { ",", "\n" };
@@ -27,15 +25,28 @@ namespace StringCalculator
                 delimList.Remove(string.Empty);
             }
             return delimList;
-        }
-        private static string GetStringToSplit(string args)
+        } // <--- TODO space blindness
+        private static string GetStringToSplit(string args) // TODO this name quite general. It could be swapped out with "GetTheThingINeedToDoThingsTo()" without much information loss.
         {
             args = args.Substring(args.IndexOf('\n') + 1);
             return args;
         }
 
-        // TODO this method is doing multiple things, it is parsing number, splitting numbers, filtering number and
-        //       doing a little co-ordination by calling the ValidateNegativeNumbers. - done
+        // TODO this methods name says that it sums numbers. However it is doing more than that.
+        //       If it's name were updated to be more accurate it would be
+        //       SplitThenParseThenCheckForNegativesThenFilterNumbersAbove1000AndThenFinallySum().
+        //       That is definitely multiple responsibilities because there is more than 1 reason to change!
+        //
+        //       I know that some of these things have been pulled out into the GetNumberList()
+        //       method, but that one also has many reasons.
+        //
+        //       This discussion is a subtle one and hard to convey here. The short of it is that a method
+        //       should have a single responsibility at the level of abstraction it is operating at.
+        //       Parsing, splitting, summing, filtering and checking for negatives are all at the same level of abstraction,
+        //       therefore no single method should be doing more than one of those. The critical thing to know here is that
+        //       co-ordination (calling methods and passing data between them to do a job) is itself a responsibility.
+        //       Functions who's responsibility it is to co-ordinate are called higher order functions.
+        //       You can read about them at https://eloquentjavascript.net/05_higher_order.html.
         private int getSumOfAllNumbers(string args, List<string> delimList)
         {
             var numberList = GetNumberList(args, delimList);
