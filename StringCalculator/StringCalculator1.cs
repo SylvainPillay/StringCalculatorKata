@@ -8,60 +8,60 @@ namespace StringCalculator
     {
         public int Add(string args)
         {
-            var delimList = getDelimiterList(args);
+            var delimiterList = GetDelimiterList(args);
 
-            var numberList = getNumberList(args, delimList);
+            var numberList = GetNumberList(args, delimiterList);
 
-            validateNegativeNumbers(numberList);
+            ValidateNegativeNumbers(numberList);
 
-            return getSumOfAllNumbers(numberList);
+            return GetSumOfAllNumbers(numberList);
         } 
 
-        private List<string> getDelimiterList(string args)
+        private List<string> GetDelimiterList(string args)
         {
-            var delimList = new List<string> { ",", "\n" };
+            var delimiterList = new List<string> { ",", "\n" };
             if (args.StartsWith("//"))
             {
-                getCustomDelimiter(args, delimList);
+                GetCustomDelimiter(args, delimiterList);
             }
-            return delimList;
+            return delimiterList;
         }
 
-        private void getCustomDelimiter(string args, List<string> delimList)
+        private void GetCustomDelimiter(string args, List<string> delimiterList)
         {
-            var delimString = args.Substring(2, args.IndexOf('\n') - 2);
-            delimList.AddRange(delimString.Split('[').Select(a => a.TrimEnd(']')).ToList());
-            delimList.Remove(string.Empty);
+            var delimiterString = args.Substring(2, args.IndexOf('\n') - 2);
+            delimiterList.AddRange(delimiterString.Split('[').Select(a => a.TrimEnd(']')).ToList());
+            delimiterList.Remove(string.Empty);
         }
 
-        private List<int> getNumberList(string args, List<string> delimList)
+        private List<int> GetNumberList(string args, List<string> delimiterList)
         {
-            var numberList = args.Split(delimList.ToArray(), StringSplitOptions.None)
+            var numberList = args.Split(delimiterList.ToArray(), StringSplitOptions.None)
                 .Where(a => int.TryParse(a, out _)).Select(int.Parse).ToList();
 
-            var filterNumbersLessThanOrEqualTo1000 = getNumbersLessThanOrEqualTo1000(numberList);
+            var filterNumbersLessThanOrEqualTo1000 = GetNumbersLessThanOrEqualTo1000(numberList);
 
             return filterNumbersLessThanOrEqualTo1000;
         }
 
-        public List<int> getNumbersLessThanOrEqualTo1000(List<int> numberList)
+        public List<int> GetNumbersLessThanOrEqualTo1000(List<int> numberList)
         {
             return numberList.Where(a => a <= 1000).ToList();
         }
 
-        private void validateNegativeNumbers(List<int> numbers)
+        private void ValidateNegativeNumbers(List<int> numbers)
         {
             if (!numbers.Any(a => a < 0)) return;
-            var negativeNumbers = getNegativeNumbers(numbers);
+            var negativeNumbers = GetNegativeNumbers(numbers);
             throw new Exception($"negatives not allowed {negativeNumbers}");
         }
 
-        private string getNegativeNumbers(List<int> numbers)
+        private string GetNegativeNumbers(List<int> numbers)
         {
             return string.Join(",", numbers.Where(a => a < 0).Select(a => a.ToString()).ToArray());
         }
 
-        private int getSumOfAllNumbers(List<int> numberList)
+        private int GetSumOfAllNumbers(List<int> numberList)
         {
             return numberList.Sum();
         }
