@@ -7,7 +7,6 @@ using Assert = NUnit.Framework.Assert;
 
 namespace TestStringCalculator
 {
-    // TODO you are missing tests for requirement 3.
     [TestFixture]
     public class TestStringCalculator1 
     {
@@ -47,6 +46,19 @@ namespace TestStringCalculator
         [TestCase("25,35", 60)]
         [TestCase("100,200", 300)]
         public void Add_GivenTwoNumbers_ShouldReturnSumOfNumbers(string input, int expectedResult)
+        {
+            //Arrange
+            var useCase = StringCalculatorSutBuilder();
+            //Act
+            var result = useCase.Add(input);
+            //Assert
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [TestCase("6\n1,1", 8)]
+        [TestCase("87,25\n35", 147)]
+        [TestCase("\n100,200", 300)]
+        public void Add_GivenNewLineBetweenNumbers_WithCommas_ShouldReturnSum(string input, int expectedResult)
         {
             //Arrange
             var useCase = StringCalculatorSutBuilder();
