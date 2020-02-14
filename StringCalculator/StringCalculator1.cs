@@ -22,16 +22,17 @@ namespace StringCalculator
             var delimiterList = new List<string> { ",", "\n" };
             if (args.StartsWith("//"))
             {
-                GetCustomDelimiter(args, delimiterList);
+                var customDelimiterList = GetCustomDelimiters(args, delimiterList);
+                delimiterList.AddRange(customDelimiterList);
             }
             return delimiterList;
         }
 
-        private void GetCustomDelimiter(string args, List<string> delimiterList)
+        private List<string> GetCustomDelimiters(string args, List<string> delimiterList)
         {
-            var delimiterString = args.Substring(2, args.IndexOf('\n') - 2);
-            delimiterList.AddRange(delimiterString.Split('[').Select(a => a.TrimEnd(']')).ToList());
-            delimiterList.Remove(string.Empty);
+            var customDelimiterString = args.Substring(2, args.IndexOf('\n') - 2);
+
+            return customDelimiterString.Split('[').Select(a => a.TrimEnd(']')).ToList();
         }
 
         private List<int> GetNumberList(string args, List<string> delimiterList)

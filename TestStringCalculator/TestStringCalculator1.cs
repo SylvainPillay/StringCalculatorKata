@@ -132,6 +132,7 @@ namespace TestStringCalculator
             //Assert
             Assert.AreEqual(expectedResult, result);
         }
+
         [TestCase("//[***][%%]\n1***2%%3", 6)]
         [TestCase("//[$$][!!!]\n10!!!20$$30", 60)]
         [TestCase("//[asd][pos]\n100asd200pos1pos9", 310)]
