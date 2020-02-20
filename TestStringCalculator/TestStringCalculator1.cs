@@ -1,7 +1,4 @@
 using System;
-// TODO unused usings!!
-using System.Reflection.Metadata.Ecma335;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using StringCalculator;
 using Assert = NUnit.Framework.Assert;
@@ -82,16 +79,16 @@ namespace TestStringCalculator
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("//;\n2;-92;2;-2")]
-        [TestCase("//$\n-37$87")]
-        [TestCase("-74,98")]
-        public void Add_GivenNegativeNumberFound_ShouldThrowError(string input)
+        [TestCase("//;\n2;-92;2;-2", "negatives not allowed -92,-2")]
+        [TestCase("//$\n-37$87", "negatives not allowed -37")]
+        [TestCase("-74,98", "negatives not allowed -74")]
+        public void Add_GivenNegativeNumberFound_ShouldThrowError(string input,string expectedErrorMessage)
         {
             //Arrange
             var useCase = StringCalculatorSutBuilder();
             //Act + Assert
             var ex = Assert.Throws<Exception>(() => useCase.Add(input));
-            Assert.That(ex.Message.Contains("negatives not allowed"));
+            Assert.That(ex.Message.Equals(expectedErrorMessage));
         }
 
         [TestCase("//;\n2;2;2;2,1002", 8)]
