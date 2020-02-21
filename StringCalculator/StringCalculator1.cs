@@ -14,13 +14,7 @@ namespace StringCalculator
 
             var numbersLessThanOrEqualTo1000 = GetNumbersLessThanOrEqualTo1000(numberList);
 
-            var negativeNumbersExist = numbersLessThanOrEqualTo1000.Any(a => a < 0);
-            if (negativeNumbersExist)
-            {
-                var negativeNumbers = GetNegativeNumbers(numbersLessThanOrEqualTo1000);
-
-                throw new Exception($"negatives not allowed {negativeNumbers}");
-            }
+            ValidateNegativeNumbers(numbersLessThanOrEqualTo1000);
 
             return GetSumOfAllNumbers(numbersLessThanOrEqualTo1000);
         } 
@@ -54,6 +48,12 @@ namespace StringCalculator
         private List<int> GetNumbersLessThanOrEqualTo1000(List<int> numberList)
         {
             return numberList.Where(a => a <= 1000).ToList();
+        }
+
+        private void ValidateNegativeNumbers(List<int> numbers)
+        {
+            if (!numbers.Any(a => a < 0)) return;
+            throw new Exception($"negatives not allowed {GetNegativeNumbers(numbers)}");
         }
 
         private string GetNegativeNumbers(List<int> numbers)
